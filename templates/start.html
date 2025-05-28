@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Викторины для всех</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Добро пожаловать на сайт с различными интересными викторинами</h1>
+        <h2>Выберите викторину:</h2>
+        <form method="post" action="/">
+            <select name="quiz" required>
+                <option value="">-- Выберите викторину --</option>
+                {% for id, name, from_age, to_age in quizes %}
+                    <option value="{{id}}">{{name}} ({{from_age}}-{{to_age}} лет)</option>
+                {% endfor %}
+            </select>
+            <div class="answer-button">
+                <input type="submit" value="Начать викторину">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
